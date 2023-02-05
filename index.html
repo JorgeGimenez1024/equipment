@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>メール送信テスト画面</title>
+   <link rel="stylesheet" href="">
+   <script>
+    window.onload = function() {
+        /**
+        * メールに記載する情報を格納する変数
+        */
+        var address, ccAddress, subject, body, hiddenData
+        var sendmail = document.getElementById('mail');
+
+        sendmail.onclick = function() {
+
+            // メールに記載したい情報をhiddenタグから取得
+            hiddenData = document.getElementById('hidden_data').value;
+            address = 'MG_C_PT1_6FAPC部長席横会議机 (Ex_C_MG_0000007689@exmail.toyota.co.jp)';
+            ccAddress = 'tetsuya_miura@mail.toyota.co.jp';
+            subject = '6FAPC部長席横会議机';
+            body = '本文' + hiddenData;
+
+            location.href = 'mailto:' +address + '?cc=' +ccAddress + '&subject=' + subject + '&body=' + body;
+        };
+        // let KEvent = new KeyboardEvent( "a", { keyCode: 65 });
+        // sendmail.dispatchEvent( KEvent );
+    };
+   </script>
+</head>
+<body>
+    <input type='hidden' id='hidden_data' value='送信したい情報をここに記載'>
+    <button id='mail'>メール送信</button>
+</body>
+</html>
